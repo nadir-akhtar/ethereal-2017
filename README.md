@@ -41,6 +41,7 @@ The charity relies on the following components:
 * Holding funds, a central entity which receives funds from these microtransactions
   + This fund will be maintained by the entity. All funds will be represented as tokens for use by recipients, and all funds will be spent on purchasing goods at a discount due to wholesale purchase. The charity will most likely sell these goods slightly above cost (but still at a comparative discount) to cover overhead costs.
 * Partnerships with other crypto companies who will sponsor any necessary exchanges from fiat to crypto, as well as cover transaction fees of generating or transacting tokens
+  + These crypto companies by donating to the charity wil also receive tax deductions
 * Multisig wallets for tokens to prevent single points of failures
   + All keys controlled by the charity
 * Marketplace, to allow people to access our discounted goods
