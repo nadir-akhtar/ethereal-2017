@@ -14,6 +14,8 @@ To ensure transparency, transactions should be made on chain. To prevent volatil
 `mapping (address => uint256) balances` is the mapping from addresses to balances of frux.
 
 ### Modifiers
+
+#### onlyOwner()
 A modifier to ensure that only the owner can execute certain functions.
 ```
 modifier onlyOwner() {
@@ -42,10 +44,6 @@ function increaseSupply(uint256 _value)
   onlyOwner
   returns (bool success)
 {
-  // Default assumes totalSupply can't be over max (2^256 - 1).
-  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  // Replace the if with this one instead.
-  // require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
   balances[owner] += _value;
   IncreaseSupply(_value);
   return true;
@@ -60,10 +58,6 @@ function transferToRecipient(address _to, uint256 _value)
   onlyOwner
   returns (bool success)
 {
-  // Default assumes totalSupply can't be over max (2^256 - 1).
-  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  // Replace the if with this one instead.
-  // require(balances[msg.sender] >= _value && balances[_to] + _value > balances[_to]);
   require(balances[msg.sender] >= _value);
   balances[msg.sender] -= _value;
   balances[_to] += _value;
@@ -80,10 +74,6 @@ function transferToOwner(uint256 _value)
   public
   returns (bool success)
 {
-  // Default assumes totalSupply can't be over max (2^256 - 1).
-  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  // Replace the if with this one instead.
-  // require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
   require(balances[msg.sender] >= _value);
   balances[msg.sender] -= _value;
   balances[owner] += _value;
@@ -95,13 +85,17 @@ function transferToOwner(uint256 _value)
 #### balanceOf()
 Gets the balance of a particular account.
 ```
-function balanceOf(address _owner) constant returns (uint256 balance) {
-  return balances[_owner];
+function balanceOf(address _recipient)
+  public
+  constant
+  returns (uint256)
+{
+  return balances[_recipient];
 }
 ```
 
 ### Events
 
-`event Transfer(address sender, address recipient, uint amount);` This is emitted whenever tokens are transferred between two addresses.
+`event Transfer(address indexed sender, address indexed recipient, uint amount);` This is emitted whenever tokens are transferred between two addresses.
 
 `event IncreaseSupply(uint256 value);` This is emitted whenever new tokens are minted. It is assumed that all new tokens go to the charity address, `owner`.
