@@ -22,7 +22,6 @@ The scheme for an `Item` is as follows:
   string name;
   uint256 id;
   uint256 price;
-  address buyer;
 }
 ```
 
@@ -82,7 +81,7 @@ function buyItem(uint id)
   checkValue(f.balanceOf(msg.sender))
   public
 {
-  f.transferToOwner(items[id].price);
+  f.burn(items[id].price);
   LogSold(msg.sender, id);
 }
 ```

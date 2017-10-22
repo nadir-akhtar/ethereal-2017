@@ -13,6 +13,8 @@ To ensure transparency, transactions should be made on chain. To prevent volatil
 
 `mapping (address => uint256) balances` is the mapping from addresses to balances of frux.
 
+`uint256 currentSupply` keeps track of how much frux exists at any given point.
+
 ### Modifiers
 
 #### onlyOwner()
@@ -33,6 +35,7 @@ function Frux()
   public
 {
   owner = msg.sender;
+  currentSupply = 0;
 }
 ```
 
@@ -45,6 +48,7 @@ function increaseSupply(uint256 _value)
   returns (bool success)
 {
   balances[owner] += _value;
+  currentSupply += _value;
   IncreaseSupply(_value);
   return true;
 }
@@ -66,19 +70,19 @@ function transferToRecipient(address _to, uint256 _value)
 }
 ```
 
+#### burn()
+After a transaction, eliminate this money from the system.
 
-#### transferToOwner()
-Transfers frux back to the owner account. Only executed when a message wants to make a purchase from the marketplace.
 ```
-function transferToOwner(uint256 _value)
+function burn(uint256 _value)
   public
-  returns (bool success)
 {
-  require(balances[msg.sender] >= _value);
-  balances[msg.sender] -= _value;
-  balances[owner] += _value;
-  Transfer(msg.sender, owner, _value);
-  return true;
+  require(_value > 0);
+  require(_value <= balances[msg.sender]);
+  address burner = msg.sender;
+  balances[burner] -= _value;
+  currentSupply -= _value;
+  Burn(burner, _value);
 }
 ```
 
@@ -99,3 +103,5 @@ function balanceOf(address _recipient)
 `event Transfer(address indexed sender, address indexed recipient, uint amount);` This is emitted whenever tokens are transferred between two addresses.
 
 `event IncreaseSupply(uint256 value);` This is emitted whenever new tokens are minted. It is assumed that all new tokens go to the charity address, `owner`.
+
+`event Burn(address indexed burner, uint256 _value);` This is emitted whenever tokens are burnt, primarily for a purchase.
