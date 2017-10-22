@@ -18,8 +18,6 @@ Anyone who qualifies for the Supplemental Nutrition Assistance Program (SNAP) is
 
 Recipients receive discounts for popular products via our discounted products received via bulksale. With a list of users and, more importantly, a list of needs, the charity purchases goods in bulk, making them cheaper for each individual. On top of that, the charity provides each users with tokens to spend on purchases, which the charity will recognize as "coupons" to receive discounts on items. These tokens are tied to the individual's identity and cannot be transferred. If an individual does not redeem these tokens within a certain period of time, they will be rescinded to avoid shortages.
 
-# Below this line are unfinished or underdeveloped considerations
-
 ## Business Model
 Basic points:
 - Donor incentives: Cheaper products due to bulk purchases leveraged by the company, and a tax deduction from their charitable donations.
