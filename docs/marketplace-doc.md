@@ -22,7 +22,6 @@ The scheme for an `Item` is as follows:
   string name;
   uint256 id;
   uint256 price;
-  address buyer;
 }
 ```
 
