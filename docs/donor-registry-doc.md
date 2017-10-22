@@ -13,16 +13,18 @@ Donors want to prove that they have indeed given donations, and blockchains are 
 
 #### DonorRegistry()
 Constructs the DonorRegistry registry and instantiates its owner as given:
-`function DonorRegistry() {
+```
+function DonorRegistry() {
   owner = msg.sender
 }
-`
+```
 #### updateAmount()
 
-`function updateAmount(address donor) {
-  
+```
+function updateAmount(address donor) {
+
 }
-`
+```
 
 ### Events
 
