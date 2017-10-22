@@ -3,7 +3,6 @@ pragma solidity 0.4.15;
 contract Frux{
 
 	address owner;
-
 	mapping (address => uint256) balances;
 
 	modifier onlyOwner() {
