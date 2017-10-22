@@ -2,29 +2,28 @@ pragma solidity 0.4.15;
 
 import "./Frux.sol";
 
-contract Marketplace {
+contract Marketplace is Frux {
 
     address owner; 
 
     mapping (uint => Item) public items;
 
-    Frux f; 
     uint idCount; 
 
     struct Item {
         string name;
         uint256 id; 
         uint256 price;
+        address buyer;
     }
 
-    event LogSold(address buyer, uint256 id);
+    event LogSold(uint256 id);
 
     modifier isOwner () {require(msg.sender == owner); _;}
-    modifier checkValue(uint amount) {require(amount == f.balanceOf(msg.sender)); _;}
+    modifier checkValue(uint amount) {require(amount == balanceOf(msg.sender)); _;}
 
     function Marketplace() public {
         owner = msg.sender;
-        f = new Frux(); 
         idCount = 0;
     }
 
@@ -32,14 +31,15 @@ contract Marketplace {
         items[idCount] = Item(
             _name, 
             idCount,
-            _price);        
+            _price, 
+            0x0);        
         idCount += 1;
     }
 
-    function buyItem(uint id) checkValue(f.balanceOf(msg.sender)) public 
+    function buyItem(uint id) checkValue(balanceOf(msg.sender)) public 
     {
-        f.burn(items[id].price); 
-        LogSold(msg.sender, id);
+        burn(items[id].price); 
+        LogSold(id);
     }
 
 }
