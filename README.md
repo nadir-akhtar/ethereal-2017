@@ -28,11 +28,19 @@ Basic points:
 - 
 
 ## Components
-* Identity registration, both for donors and for recipients
-  + Amazon uses an EBT number and card photo to verify the -- we intend on doing the same
+The charity relies on the following components:
+* Identity registration, both for donors and for recipients.
+  + **Donors**: To ensure that donors can redeem tax deductions, the charity provides donors the opportunity to register as a donor. The charity will track donations on their behalf, giving a statement at the end of every quarter (or other reasonable time period). Donors would still be able to see their information at any point, as their activity are public (yet not publicly linked to their personal identity).
+    + **Smart contract registry** (based off uPort) which tracks how much the donor has given and uses events to show where those particular funds have moved. Each donor will be anonymous by default but can reveal themselves publicly if they choose. The charity will generate a scheme to track public and private keys on the donors' behalf.
+  + **Recipients**: To ensure that only those in need get discounts, the charity tracks the identities of all recipients of aid and discounts. Amazon uses an EBT number and card photo to verify eligibility for a discounted version of Amazon Prime -- the charity intends on doing similar verification for recipients. Eventually, the charity can transition to a direct evaluation of recipients by examining their tax information.
+    + **Central registry** to keep track of identities associated with the charity's service. All users who attempt to register with the charity will be cross-referenced with government information to ensure that only the truly eligible receive benefits. Each recipient must have a Metamask account as well to receive tokens. Management and security of that information belongs to the user, not to the charity.
+    + The charity expects recipients to reenroll every year (or other reasonable time period).
 * Bulk orders, to provide discounts on popular necessities (diapers, tampons)
+  + Purchasing in bulk makes the assumption that there are enough users to make the purchases cost effective. As these items are non-perishable, the charity may store them for an extended period of time as necessary if not enough users are purchasing products.
+  + The charity will, until having more information on the needs of recipients or an effective way to let users vote on their preference for goods, buy goods at its own discretion.
 * Holding funds, a central entity which receives funds from these microtransactions
-* Partnerships with other crypto companies who will sponsor 
+  + This fund will be maintained by the entity. All funds will be represented as tokens for use by recipients, and all funds will be spent on purchasing goods at a discount due to wholesale purchase. The charity will most likely sell these goods slightly above cost (but still at a comparative discount) to cover overhead costs.
+* Partnerships with other crypto companies who will sponsor any necessary exchanges from fiat to crypto, as well as cover transaction fees of generating or transacting tokens
 * Multisig wallets for tokens to prevent single points of failures
   + All keys controlled by the charity
 * Marketplace, to allow people to access our discounted goods
