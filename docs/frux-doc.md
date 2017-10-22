@@ -14,10 +14,10 @@ To ensure transparency, transactions should be made on chain. To prevent volatil
 `mapping (address => uint256) balances` is the mapping from addresses to balances of frux.
 
 ### Modifiers
-
+A modifier to ensure that only the owner can execute certain functions.
 ```
-modifier onlyAfter (uint start, uint daysAfter) {
-  require(now >= start + daysAfter * 90 days);
+modifier onlyOwner() {
+  require(msg.sender == owner)
   _;
 }
 ```
@@ -25,7 +25,7 @@ modifier onlyAfter (uint start, uint daysAfter) {
 ### External functions
 
 #### Frux()
-
+A constructor to initialize the contract.
 ```
 function Frux()
   public
@@ -42,10 +42,10 @@ function increaseSupply(uint256 _value)
   onlyOwner
   returns (bool success)
 {
-  //Default assumes totalSupply can't be over max (2^256 - 1).
-  //If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  //Replace the if with this one instead.
-  //require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
+  // Default assumes totalSupply can't be over max (2^256 - 1).
+  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
+  // Replace the if with this one instead.
+  // require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
   balances[owner] += _value;
   IncreaseSupply(_value);
   return true;
@@ -53,17 +53,17 @@ function increaseSupply(uint256 _value)
 ```
 
 #### transferToRecipient()
-Transfers frux to a recipient. Modified from the aforementioned StandardToken.sol.
+Transfers frux to a recipient.
 ```
 function transferToRecipient(address _to, uint256 _value)
   public
   onlyOwner
   returns (bool success)
 {
-  //Default assumes totalSupply can't be over max (2^256 - 1).
-  //If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  //Replace the if with this one instead.
-  //require(balances[msg.sender] >= _value && balances[_to] + _value > balances[_to]);
+  // Default assumes totalSupply can't be over max (2^256 - 1).
+  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
+  // Replace the if with this one instead.
+  // require(balances[msg.sender] >= _value && balances[_to] + _value > balances[_to]);
   require(balances[msg.sender] >= _value);
   balances[msg.sender] -= _value;
   balances[_to] += _value;
@@ -74,16 +74,16 @@ function transferToRecipient(address _to, uint256 _value)
 
 
 #### transferToOwner()
-Transfers frux back to the owner account. Only executed when a message wants to make a purchase from the marketplace. Modified from the aforementioned StandardToken.sol.
+Transfers frux back to the owner account. Only executed when a message wants to make a purchase from the marketplace.
 ```
 function transferToOwner(uint256 _value)
   public
   returns (bool success)
 {
-  //Default assumes totalSupply can't be over max (2^256 - 1).
-  //If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
-  //Replace the if with this one instead.
-  //require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
+  // Default assumes totalSupply can't be over max (2^256 - 1).
+  // If your token leaves out totalSupply and can issue more tokens as time goes on, you need to check if it doesn't wrap.
+  // Replace the if with this one instead.
+  // require(balances[msg.sender] >= _value && balances[owner] + _value > balances[owner]);
   require(balances[msg.sender] >= _value);
   balances[msg.sender] -= _value;
   balances[owner] += _value;
