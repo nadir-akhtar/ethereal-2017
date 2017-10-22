@@ -15,9 +15,10 @@ contract Marketplace {
         string name;
         uint256 id; 
         uint256 price;
+        address buyer;
     }
 
-    event LogSold(address buyer, uint256 id);
+    event LogSold(uint256 id);
 
     modifier isOwner () {require(msg.sender == owner); _;}
     modifier checkValue(uint amount) {require(amount == f.balanceOf(msg.sender)); _;}
@@ -32,14 +33,15 @@ contract Marketplace {
         items[idCount] = Item(
             _name, 
             idCount,
-            _price);        
+            _price, 
+            0x0);        
         idCount += 1;
     }
 
     function buyItem(uint id) checkValue(f.balanceOf(msg.sender)) public 
     {
-        f.transferToOwner(items[id].price); 
-        LogSold(msg.sender, id);
+        f.burn(items[id].price); 
+        LogSold(id);
     }
 
 }
