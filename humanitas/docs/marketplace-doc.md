@@ -5,25 +5,26 @@ To keep all transactions transparent, purchases for goods are made through a sma
 
 ## Contract Details
 
+### Inheritance
+
+This contract is an instance of `Frux` to inherit all the functionality of the token contract.
+
 ### Storage
 `address owner` is the address of the charity which controls information about the contract.
 
 `mapping (uint => Item) items` is a mapping of some `id` to an `Item` to keep track of all available goods.
-
-`Frux f` is the Frux contract of tokens. It will be generated within this contract so as to allow this contract to use the functions of that contract seamlessly.
-
-`uint idCount` is a global value which increments by one every time an item is added to the catalog.
 
 `struct Item` is a struct which contains relevant information about each item.
 
 The scheme for an `Item` is as follows:
 ```
 {
-  string name;
-  uint256 id;
+  bytes32 name;
   uint256 price;
+  uint256 sales;
 }
 ```
+The name and price is self-explanatory. Sales keeps track of how many times that item has been purchased.
 
 ### Modifiers
 
@@ -54,23 +55,20 @@ function Marketplace()
   public
 {
   owner = msg.sender;
-  f = new Frux();
-  idCount = 0;
 }
 ```
 
 #### addItem()
 Add another item to the catalog.
 ```
-function addItem(string _name, uint _price)
+function addItem(bytes32 _name, uint _price)
   public
   isOwner
 {
-  items[idCount] = Item(
+  items[_name] = Item(
     _name,
-    idCount,
-    _price);        
-  idCount += 1;
+    _price,
+    0);
 }
 ```
 
@@ -81,7 +79,8 @@ function buyItem(uint id)
   checkValue(f.balanceOf(msg.sender))
   public
 {
-  f.burn(items[id].price);
+  burn(items[name].price);
+  items[name].sales += 1;
   LogSold(msg.sender, id);
 }
 ```

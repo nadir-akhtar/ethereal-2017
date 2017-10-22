@@ -57,4 +57,4 @@ function getAmount(address donor)
 ```
 
 ### Events
-`event DonationMade(address donor, uint amount);` This is emitted whenever a donor's donation amount is updated.
+`event LogDonationMade(address donor, uint amount);` This is emitted whenever a donor's donation amount is updated.

@@ -21,7 +21,7 @@ To ensure transparency, transactions should be made on chain. To prevent volatil
 A modifier to ensure that only the owner can execute certain functions.
 ```
 modifier onlyOwner() {
-  require(msg.sender == owner)
+  require(msg.sender == owner);
   _;
 }
 ```
@@ -49,7 +49,7 @@ function increaseSupply(uint256 _value)
 {
   balances[owner] += _value;
   currentSupply += _value;
-  IncreaseSupply(_value);
+  LogIncreaseSupply(_value);
   return true;
 }
 ```
@@ -63,16 +63,16 @@ function transferToRecipient(address _to, uint256 _value)
   returns (bool success)
 {
   require(balances[msg.sender] >= _value);
+  require(_to != address(0));
   balances[msg.sender] -= _value;
   balances[_to] += _value;
-  Transfer(msg.sender, _to, _value);
+  LogTransfer(msg.sender, _to, _value);
   return true;
 }
 ```
 
 #### burn()
 After a transaction, eliminate this money from the system.
-
 ```
 function burn(uint256 _value)
   public
@@ -82,7 +82,7 @@ function burn(uint256 _value)
   address burner = msg.sender;
   balances[burner] -= _value;
   currentSupply -= _value;
-  Burn(burner, _value);
+  LogBurn(burner, _value);
 }
 ```
 
@@ -100,8 +100,8 @@ function balanceOf(address _recipient)
 
 ### Events
 
-`event Transfer(address indexed sender, address indexed recipient, uint amount);` This is emitted whenever tokens are transferred between two addresses.
+`event LogTransfer(address indexed sender, address indexed recipient, uint amount);` This is emitted whenever tokens are transferred between two addresses.
 
-`event IncreaseSupply(uint256 value);` This is emitted whenever new tokens are minted. It is assumed that all new tokens go to the charity address, `owner`.
+`event LogIncreaseSupply(uint256 value);` This is emitted whenever new tokens are minted. It is assumed that all new tokens go to the charity address, `owner`.
 
-`event Burn(address indexed burner, uint256 _value);` This is emitted whenever tokens are burnt, primarily for a purchase.
+`event LogBurn(address indexed burner, uint256 _value);` This is emitted whenever tokens are burnt, primarily for a purchase.
