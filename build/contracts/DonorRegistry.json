@@ -1,0 +1,66 @@
+{
+  "contract_name": "DonorRegistry",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "donor",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateAmount",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "donor",
+          "type": "address"
+        }
+      ],
+      "name": "getAmount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "donor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "DonationMade",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b5b60008054600160a060020a03191633600160a060020a03161790555b5b61016e8061003c6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416632dbe8cf48114610048578063f5a797671461006c575b600080fd5b341561005357600080fd5b61006a600160a060020a036004351660243561009d565b005b341561007757600080fd5b61008b600160a060020a0360043516610123565b60405190815260200160405180910390f35b60005433600160a060020a039081169116146100b857600080fd5b600160a060020a038216600090815260016020526040908190208054830190557faa13962bc79c7a0bc42cb8169b1705f0a6b55cc404ffb8a589d771ca78675978908390839051600160a060020a03909216825260208201526040908101905180910390a15b5b5050565b600160a060020a0381166000908152600160205260409020545b9190505600a165627a7a723058207ce91e5f1ede50eeb48e57d68adffbda56e7ba951783160b61676e88b748c3f60029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1508672588862
+}
