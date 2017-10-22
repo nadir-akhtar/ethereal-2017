@@ -22,10 +22,9 @@ Recipients receive discounts for popular products via our discounted products re
 
 ## Business Model
 Basic points:
-- Donor incentives: Chari
-- Recipient incentives, cheaper products and, hopefully, reciprocation in the future after getting back on their feet by paying back into this pool
-- Sponsor incentives, tax deductions and positive community image
-- 
+- Donor incentives: Cheaper products due to bulk purchases leveraged by the company, and a tax deduction from their charitable donations.
+- Recipient incentives: Cheaper and free products due to distribution from Frux fund, eventual goal is to be on the giving end.
+- Sponsor incentives: Tax deductions and positive community image
 
 ## Components
 The charity relies on the following components:
@@ -37,9 +36,9 @@ The charity relies on the following components:
     + The charity expects recipients to reenroll every year (or other reasonable time period).
 * Bulk orders, to provide discounts on popular necessities (diapers, tampons)
   + Purchasing in bulk makes the assumption that there are enough users to make the purchases cost effective. As these items are non-perishable, the charity may store them for an extended period of time as necessary if not enough users are purchasing products.
-  + The charity will, until having more information on the needs of recipients or an effective way to let users vote on their preference for goods, buy goods at its own discretion.
+  + The charity will, until the machine learning aspect is built, buy goods at its own discretion.
 * Holding funds, a central entity which receives funds from these microtransactions
-  + This fund will be maintained by the entity. All funds will be represented as tokens for use by recipients, and all funds will be spent on purchasing goods at a discount due to wholesale purchase. The charity will most likely sell these goods slightly above cost (but still at a comparative discount) to cover overhead costs.
+  + This fund will be maintained by the entity. All funds will be represented as tokens for use by recipients, and all funds will be spent on purchasing goods at a discount due to wholesale purchase. The charity will most likely sell these goods slightly above cost (but still at a competitive discount) to cover overhead costs.
 * Partnerships with other crypto companies who will sponsor any necessary exchanges from fiat to crypto, as well as cover transaction fees of generating or transacting tokens
   + These crypto companies by donating to the charity wil also receive tax deductions
 * Multisig wallets for tokens to prevent single points of failures
