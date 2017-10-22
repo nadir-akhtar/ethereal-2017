@@ -1,6 +1,7 @@
 pragma solidity 0.4.15; 
 
-contract DonorRegistry{
+
+contract DonorRegistry {
 
 	address owner; 
 
@@ -17,7 +18,7 @@ contract DonorRegistry{
 
 	function updateAmount(address donor, uint amount) public onlyOwner {
 		amounts[donor] += amount;
-  		DonationMade(donor, amount);
+  		LogDonationMade(donor, amount);
 	}
 
 	function getAmount(address donor) public constant returns (uint)
@@ -25,7 +26,5 @@ contract DonorRegistry{
   		return amounts[donor];
 	}
 
-	event DonationMade(address donor, uint amount);
-
-
+	event LogDonationMade(address donor, uint amount);
 }
