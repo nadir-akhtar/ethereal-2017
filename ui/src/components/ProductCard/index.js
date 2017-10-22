@@ -15,7 +15,7 @@ class ProductCard extends Component {
                 <CardTitle title={this.props.name} subtitle={this.props.price.toString() + " Frux"} />
                 <CardText>
                     <Media>
-                        {/*<img src={this.props.image}/>*/}
+                        <img src={this.props.image} alt="Error loading"/>
                     </Media>
                     <p>{this.props.desc}</p>
                 </CardText>

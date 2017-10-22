@@ -1,8 +1,8 @@
 export const ADD_TO_CART = "ADD_TO_CART";
+export const LOAD_CART = "LOAD_CART";
 export const CHECKOUT = "CHECKOUT";
 export const CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
 export const CHECKOUT_FAILURE = "CHECKOUT_FAILURE";
-export const LOAD_CART = "LOAD_CART";
 
 export const addToCart = function (name, price, image, desc) {
     return {
@@ -20,9 +20,10 @@ export const loadCart = function () {
     }
 }
 
-export const checkout = function () {
+export const checkout = function (cart) {
     return {
-        type: CHECKOUT
+        type: CHECKOUT,
+        cart: cart
     }
 }
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {routes as scenes} from '../routes';
+import { Link } from 'react-router-dom';
 import {Toolbar, Button} from 'react-md';
 import './App.css';
 
 class App extends Component {
   render() {
-    const nav = <Button key="home" href="home" icon>home</Button>;
+    const nav = <Button key="home" component={Link} to="/home" icon>home</Button>;
     const actions = [
-      <Button key="cart" href="/checkout" icon>shopping_cart</Button>,
+      <Button key="cart" component={Link} to="/checkout" icon>shopping_cart</Button>,
     ];
     return (
       <div className="App">

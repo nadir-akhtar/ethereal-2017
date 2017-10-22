@@ -4,9 +4,9 @@ import Products from '../Products';
 import { loadCart } from './home.actions';
 
 class Home extends Component {
-
+  
   componentWillMount() {
-    this.props.loadCart()
+    this.props.loadCart();
   }
 
   render() {
@@ -21,7 +21,6 @@ class Home extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     cart: state.home.cart,
-    visible: state.home.visible
   };
 }
 

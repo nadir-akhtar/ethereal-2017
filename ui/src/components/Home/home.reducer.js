@@ -15,29 +15,27 @@ const reducer = function (state = initialState, action) {
         case LOAD_CART:
             return {
                 ...state,
-                checkoutStatus: false
             };
         case ADD_TO_CART:
-            return {
-                ...state,
-                cart: {
-                    ...state.cart,
-                    [action.name]: { 
+            const newCart = Object.values(state.cart).reduce((prev, prod) => {
+                prev[prod.name] = prod
+                return prev;
+            }, {});
+            newCart[action.name] = { 
                         name: action.name, 
                         price: action.price, 
                         image: action.image, 
                         desc: action.desc 
                     }
-                }
-            };
-        case CHECKOUT:
             return {
-                ...state
+                ...state,
+                cart: newCart
             };
         case CHECKOUT_SUCCESS:
-            console.log(action);
             return {
-                ...initialState
+                ...state,
+                checkoutCart: state.cart,
+                checkoutStatus: true
             };
         case CHECKOUT_FAILURE:
             return {
