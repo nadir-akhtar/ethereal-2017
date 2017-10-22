@@ -16,17 +16,16 @@ All this money is turned into tokens of a stable coin on the Ethereum blockchain
 ### Recipients
 Anyone who qualifies for the Supplemental Nutrition Assistance Program (SNAP) is eligible to be a recipient. (If possible, TANF and WIC status will also be recognized in time.)
 
-Recipients receive discounts for popular products via our discounted products received via bulksale. With a list of users and, more importantly, a list of needs, the charity purchases goods by the dozens, making them cheaper for each individual. On top of that, the charity provides each users with tokens to spend on purchases, which the charity will recognize as "coupons" to receive discounts on items. These tokens are tied to the individual's identity and cannot be transferred. If an individual does not redeem these tokens within a certain period of time, they will be rescinded to avoid shortages.
+Recipients receive discounts for popular products via our discounted products received via bulksale. With a list of users and, more importantly, a list of needs, the charity purchases goods in bulk, making them cheaper for each individual. On top of that, the charity provides each users with tokens to spend on purchases, which the charity will recognize as "coupons" to receive discounts on items. These tokens are tied to the individual's identity and cannot be transferred. If an individual does not redeem these tokens within a certain period of time, they will be rescinded to avoid shortages.
 
 # Below this line are unfinished or underdeveloped considerations
 
 ## Business Model
 Basic points:
-- Donor incentives, tax deductions
-- Recipient incentivies, cheaper products and, hopefully, reciprocation in the future after getting back on their feet by paying back into this pool
+- Donor incentives: Chari
+- Recipient incentives, cheaper products and, hopefully, reciprocation in the future after getting back on their feet by paying back into this pool
 - Sponsor incentives, tax deductions and positive community image
-
-TODO Cliff, your turn, please finish this section with your vibrant expression!
+- 
 
 ## Components
 * Identity registration, both for donors and for recipients
