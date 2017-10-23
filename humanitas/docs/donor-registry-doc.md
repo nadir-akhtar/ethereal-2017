@@ -40,7 +40,7 @@ function updateAmount(address donor, uint amount)
   onlyOwner
 {
   amounts[donor] += amount;
-  DonationMade(donor, amount);
+  LogDonationMade(donor, amount);
 }
 ```
 
