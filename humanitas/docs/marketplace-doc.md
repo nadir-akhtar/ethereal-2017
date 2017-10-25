@@ -17,7 +17,7 @@ This contract is an instance of `Frux` to inherit all the functionality of the t
 `struct Item` is a struct which contains relevant information about each item.
 
 The scheme for an `Item` is as follows:
-```
+```javascript
 {
   bytes32 name;
   uint256 price;
@@ -30,7 +30,7 @@ The name and price is self-explanatory. Sales keeps track of how many times that
 
 #### isOwner()
 This modifier insures that only the owner can execute this particular function.
-```
+```javascript
 modifier isOwner() {
   require(msg.sender == owner);
   _;
@@ -39,7 +39,7 @@ modifier isOwner() {
 
 #### checkValue()
 This modifier insures that the amount being paid is exactly the cost of the item.
-```
+```javascript
 modifier checkValue(uint amount) {
   require(amount == f.balanceOf(msg.sender));
   _;
@@ -50,7 +50,7 @@ modifier checkValue(uint amount) {
 
 #### Marketplace()
 Initializes both a Marketplace contract and a Frux contract.
-```
+```javascript
 function Marketplace()
   public
 {
@@ -60,7 +60,7 @@ function Marketplace()
 
 #### addItem()
 Add another item to the catalog.
-```
+```javascript
 function addItem(bytes32 _name, uint _price)
   public
   isOwner
@@ -74,9 +74,9 @@ function addItem(bytes32 _name, uint _price)
 
 #### buyItem()
 Allow a user to buy an item.
-```
+```javascript
 function buyItem(uint id)
-  checkValue(f.balanceOf(msg.sender))
+  checkValue(balanceOf(msg.sender))
   public
 {
   burn(items[name].price);

@@ -19,7 +19,7 @@ To ensure transparency, transactions should be made on chain. To prevent volatil
 
 #### onlyOwner()
 A modifier to ensure that only the owner can execute certain functions.
-```
+```javascript
 modifier onlyOwner() {
   require(msg.sender == owner);
   _;
@@ -30,7 +30,7 @@ modifier onlyOwner() {
 
 #### Frux()
 A constructor to initialize the contract.
-```
+```javascript
 function Frux()
   public
 {
@@ -41,7 +41,7 @@ function Frux()
 
 #### increaseSupply()
 Mints more frux as according to the amount donated by donors.
-```
+```javascript
 function increaseSupply(uint256 _value)
   public
   onlyOwner
@@ -56,7 +56,7 @@ function increaseSupply(uint256 _value)
 
 #### transferToRecipient()
 Transfers frux to a recipient.
-```
+```javascript
 function transferToRecipient(address _to, uint256 _value)
   public
   onlyOwner
@@ -73,7 +73,7 @@ function transferToRecipient(address _to, uint256 _value)
 
 #### burn()
 After a transaction, eliminate this money from the system.
-```
+```javascript
 function burn(uint256 _value)
   public
 {
@@ -88,7 +88,7 @@ function burn(uint256 _value)
 
 #### balanceOf()
 Gets the balance of a particular account.
-```
+```javascript
 function balanceOf(address _recipient)
   public
   constant

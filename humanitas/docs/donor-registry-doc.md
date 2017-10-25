@@ -14,7 +14,7 @@ Donors want to prove that they have indeed given donations, and blockchains are 
 
 #### onlyOwner()
 A modifier to ensure that only the owner can modify the contract.
-```
+```javascript
 modifier onlyOwner() {
   require(msg.sender == owner)
   _;
@@ -25,7 +25,7 @@ modifier onlyOwner() {
 
 #### DonorRegistry()
 Constructs the DonorRegistry registry and instantiates its owner as given:
-```
+```javascript
 function DonorRegistry()
   public
 {
@@ -34,7 +34,7 @@ function DonorRegistry()
 ```
 #### updateAmount()
 Updates the amount that a donor has contributed according to funds received by the charity.
-```
+```javascript
 function updateAmount(address donor, uint amount)
   public
   onlyOwner
@@ -46,7 +46,7 @@ function updateAmount(address donor, uint amount)
 
 #### getAmount()
 Returns the amount that a donor has contributed.
-```
+```javascript
 function getAmount(address donor)
   public
   constant
