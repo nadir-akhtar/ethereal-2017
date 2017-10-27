@@ -32,8 +32,7 @@ contract Marketplace is Frux {
             0);
     }
 
-    function buyItem(bytes32 name) checkValue(balanceOf(msg.sender)) public 
-    {
+    function buyItem(bytes32 name) checkValue(balanceOf(msg.sender)) public {
         burn(items[name].price);
         items[name].sales += 1;
         LogSold(msg.sender, name);

@@ -21,8 +21,7 @@ contract DonorRegistry {
   		LogDonationMade(donor, amount);
 	}
 
-	function getAmount(address donor) public constant returns (uint)
-	{
+	function getAmount(address donor) public constant returns (uint) {
   		return amounts[donor];
 	}
 
