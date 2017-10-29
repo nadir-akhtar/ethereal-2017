@@ -6,7 +6,7 @@ import "./Frux.sol";
 
 contract Marketplace is Frux {
 
-    address owner; 
+    address owner;
 
     mapping (bytes32 => Item) public items;
 
@@ -27,8 +27,8 @@ contract Marketplace is Frux {
 
     function addItem(bytes32 _name, uint _price) public isOwner {
         items[_name] = Item(
-            _name, 
-            _price, 
+            _name,
+            _price,
             0);
     }
 

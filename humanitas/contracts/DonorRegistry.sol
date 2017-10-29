@@ -1,11 +1,13 @@
-pragma solidity 0.4.15; 
+pragma solidity 0.4.18;
 
 
 contract DonorRegistry {
 
-	address owner; 
+	address owner;
 
-	mapping (address => uint256) amounts; 
+	mapping (address => uint256) amounts;
+
+	event LogDonationMade(address donor, uint amount);
 
 	modifier onlyOwner() {
   		require(msg.sender == owner);
@@ -13,7 +15,7 @@ contract DonorRegistry {
 	}
 
 	function DonorRegistry() public {
-		owner = msg.sender;	
+		owner = msg.sender;
 	}
 
 	function updateAmount(address donor, uint amount) public onlyOwner {
@@ -25,5 +27,4 @@ contract DonorRegistry {
   		return amounts[donor];
 	}
 
-	event LogDonationMade(address donor, uint amount);
 }
