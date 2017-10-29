@@ -4,7 +4,7 @@
 
 To ensure transparency, transactions should be made on chain. To prevent volatility from interfering with the use of this marketplace, this stable coin exists to serve as a traceable asset with no "cash value." It cannot be traded between addresses to ensure that only the rightful owner has the ability to spend those tokens. The tokens cannot be redeemed for fiat or crypto and will be rescinded from the recipient after a reasonable time of no use (say, 90 days). However, this `rescind` feature will not be available until later, due to the complicated implementation of this UTXO-like payment tracking.
 
-![Inspired by the bare-bones ERC20 token from Consensys' GitHub](https://github.com/ConsenSys/Tokens/blob/master/contracts/StandardToken.sol). However, this is not an ERC20 compliant token, as transfers are not meant to be made freely between addresses.
+[Inspired by the bare-bones ERC20 token from Consensys' GitHub](https://github.com/ConsenSys/Tokens/blob/master/contracts/StandardToken.sol). However, this is not an ERC20 compliant token, as transfers are not meant to be made freely between addresses.
 
 ## Contract Details
 
