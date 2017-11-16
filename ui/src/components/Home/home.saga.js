@@ -27,7 +27,7 @@ function handleCheckout(cart) {
                     alert(error);
                 }
                 else {
-                    console.log("Successfully purchased " + product.name + "\nView Transaction at " + result)
+                    alert("Successfully purchased " + product.name + "\nView Transaction at " + result)
                 }
             });
         });
